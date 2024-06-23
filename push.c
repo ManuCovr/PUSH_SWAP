@@ -1,26 +1,39 @@
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+static void		push(t_stack_node **dst, t_stack_node **src)
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
+	t_stack_node	*push_node;
 
-	a = NULL;
-	b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
-		return (1);
-	else if (argc == 2)
-		argv = split(argv[1], ' ');
-	init_stack_a(&a, argv + 1);
-	if (!stack_sorted(a))
+	if(!*src)
+		return ;
+	push_node = *src;
+	*src = (*src)->next; // move to the next node, which will become the new top node
+	if (*src)
+		(*src)->prev = NULL; // set current node as the head of the stack
+	push_node->prev = NULL; // detach the node to push it from its stack
+	if (!*dst) // check if stack (destiny) is empty
 	{
-		if (stack_len(a) == 2)
-			sa(&a, false);
-		else if (stack_len(a) == 3)
-			sort_three(&a);
-		else
-			sort_stacks(&a, &b);
+		*dst = push_node;
+		push_node->next = NULL;
 	}
-	free_my_mans(&a);
-	return (0);
+	else
+	{
+		push_node->next = *dst;
+		push_node->next->prev = push_node;
+		*dst = push_node;
+	}
+}
+
+void	pa(t_stack_node **a, t_stack_node **b, bool print)
+{
+	push(a, b);
+	if (!print)
+		ft_printf("pa\n");
+}
+
+void	pb(t_stack_node **b, t_stack_node **a, bool print)
+{
+	push(b, a);
+	if (!print)
+		ft_printf("pb\n");
 }

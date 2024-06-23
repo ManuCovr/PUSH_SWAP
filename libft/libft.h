@@ -81,5 +81,7 @@ int		ft_putnbr(int nbr);
 char	*ft_itoa(int n);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
+int	ft_printf(const char *format, ...);
+
 
 #endif
