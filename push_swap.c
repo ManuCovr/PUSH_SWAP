@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 		else if (stack_len(a) == 3)
 			sort_three(&a);
 		else
-			sort_stack(&a, &b);
+			sort_stacks(&a, &b);
 	}
 	free_my_mans(&a);
 	return (0);

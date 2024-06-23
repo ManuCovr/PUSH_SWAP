@@ -58,7 +58,7 @@ char	**split(char *s, char c)
 	if (!word_count)
 		exit(1);
 	result = malloc(sizeof(char *) * (size_t)(word_count + 2));
-	if (!result);
+	if (!result)
 		return (NULL);
 	while (word_count-- >= 0)
 	{

@@ -27,7 +27,7 @@ static void		move_a_to_b(t_stack_node **a, t_stack_node **b)
 		rev_rotate_both(a, b, cheapest_node);
 	prep_for_push(a, cheapest_node, 'a'); // make sure the cheapest node is at the top
 	prep_for_push(b, cheapest_node->target_node, 'b'); // make sure target node is at the top
-	pb(a, b, false);
+	pb(b, a, false);
 }
 
 static void		move_b_to_a(t_stack_node **a, t_stack_node **b)

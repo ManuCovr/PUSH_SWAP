@@ -74,14 +74,12 @@ int		ft_printf(const char *format, ...);
 int		ft_putstr(char *str);
 int		ft_putchar(char c);
 int		ft_arguments(const char *fmt, int i, va_list ap);
-int		ft_put_pointer(void *nbr, char *base);
+int		ft_putpointer(void *nbr, char *base);
 int		ft_put_hex(unsigned int nbr, char *base);
 int		ft_putnbr_u(unsigned int n);
 int		ft_putnbr(int nbr);
 char	*ft_itoa(int n);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
-int	ft_printf(const char *format, ...);
-
 
 #endif

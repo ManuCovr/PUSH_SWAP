@@ -33,6 +33,8 @@ t_stack_node	*find_last(t_stack_node *stack);
 bool	stack_sorted(t_stack_node *stack);
 t_stack_node	*find_min(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
+void	sort_stacks(t_stack_node **a, t_stack_node **b);
+void	sort_three(t_stack_node **a);
 
 //Commands
 void	sa(t_stack_node **a, bool print);
@@ -49,7 +51,7 @@ void	rr(t_stack_node **a, t_stack_node **b, bool print);
 
 //Nodes
 
-void set_cheapest(t_stack_node *stack);
+t_stack_node	*get_cheapest(t_stack_node *stack);
 void	init_nodes_a(t_stack_node *a, t_stack_node *b);
 void set_cheapest(t_stack_node *stack);
 void	current_index(t_stack_node *stack);

@@ -48,7 +48,7 @@ static char	*hex_to_str(unsigned long n, char *base)
 	return (hex);
 }
 
-int	ft_put_pointer(void *nbr, char *base)
+int	ft_putpointer(void *nbr, char *base)
 {
 	int				len;
 	char			*str;

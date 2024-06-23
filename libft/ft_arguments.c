@@ -32,7 +32,7 @@ int	ft_arguments(const char *fmt, int i, va_list ap)
 			return (ft_put_hex(va_arg(ap, unsigned int), "0123456789abcdef"));
 	}
 	else if (fmt [i + 1] == 'p')
-		return (ft_put_pointer(va_arg(ap, void *), "0123456789abcdef"));
+		return (ft_putpointer(va_arg(ap, void *), "0123456789abcdef"));
 	else
 		return (0);
 }
