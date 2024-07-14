@@ -3,7 +3,7 @@
 static void		rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node)
 {
 	while (*b != cheapest_node->target_node && *a != cheapest_node)
-		rr(a, b, false);
+		rr(a, b);
 	current_index(*a);
 	current_index(*b);
 }
@@ -11,7 +11,7 @@ static void		rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheap
 static void		rev_rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node)
 {
 	while (*b != cheapest_node->target_node && *a != cheapest_node)
-		rrr(a, b, false);
+		rrr(a, b);
 	current_index(*a);
 	current_index(*b);
 }
@@ -27,23 +27,23 @@ static void		move_a_to_b(t_stack_node **a, t_stack_node **b)
 		rev_rotate_both(a, b, cheapest_node);
 	prep_for_push(a, cheapest_node, 'a'); // make sure the cheapest node is at the top
 	prep_for_push(b, cheapest_node->target_node, 'b'); // make sure target node is at the top
-	pb(b, a, false);
+	pb(b, a);
 }
 
 static void		move_b_to_a(t_stack_node **a, t_stack_node **b)
 {
 	prep_for_push(a, (*b)->target_node, 'a'); // make sure 'b's target 'a' is on top
-	pa(a, b, false);
+	pa(a, b);
 }
 
 static void		min_to_top(t_stack_node **a) // moves the smallest to the top
 {
 	while ((*a)->nbr != find_min(*a)->nbr) // while smallest number is not on top
 	{
-		if(find_min(*a)->above)
-			ra(a, false);
+		if (find_min(*a)->above)
+			ra(a);
 		else
-			rra(a, false);
+			rra(a);
 	}
 }
 
@@ -53,9 +53,9 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 
 	len_a = stack_len(*a);
 	if (len_a-- > 3 && !stack_sorted(*a)) // if stack A has more than 3 nodes and arent sorted
-		pb(b, a, false);
+		pb(b, a);
 	if (len_a-- > 3 && !stack_sorted(*a)) // after pushing, check if there are STILL 3 nodes
-		pb(b, a, false);
+		pb(b, a);
 	while (len_a-- > 3 && !stack_sorted(*a))
 	{
 		init_nodes_a(*a, *b);

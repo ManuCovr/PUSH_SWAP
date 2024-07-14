@@ -2,7 +2,7 @@
 NAME = push_swap
 SRCS =  $(wildcard *.c)
 OBJS = ${SRCS:.c=.o}
-CC = gcc
+CC = @gcc
 CFLAGS = -Wall -Wextra -Werror -Iincludes
 RM = rm -rf
 
@@ -22,13 +22,12 @@ SRCS = push.c \
 								stack_utils.c
 
 all: ${NAME}
+
 ${NAME}: ${OBJS}
-	@${MAKE} -C ./libft
-	@${CC} ${CFLAGS} ${OBJS} ./libft/libft.a -o ${NAME}
+	@${CC} ${CFLAGS} ${OBJS} -o ${NAME}
 	@echo "Compiled successfully!"
 
-clean: 
-	@${MAKE} -C ./libft fclean
+clean:
 	@${RM} ${OBJS}
 	@echo "Cleaned!"
 

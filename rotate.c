@@ -14,24 +14,21 @@ static void		rotate(t_stack_node **stack)
 	last_node->next->next = NULL; // terminate null stack
 }
 
-void	ra(t_stack_node **a, bool print)
+void	ra(t_stack_node **a)
 {
 	rotate(a);
-	if (!print)
-		ft_printf("ra\n");
+	putstr("ra\n");
 }
 
-void	rb(t_stack_node **b, bool print)
+void	rb(t_stack_node **b)
 {
 	rotate(b);
-	if (!print)
-		ft_printf("rb\n");
+	putstr("rb\n");
 }
 
-void	rr(t_stack_node **a, t_stack_node **b, bool print)
+void	rr(t_stack_node **a, t_stack_node **b)
 {
 	rotate(a);
 	rotate(b);
-	if (!print)
-		ft_printf("rr\n");
+	putstr("rr\n");
 }

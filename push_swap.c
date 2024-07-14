@@ -11,11 +11,11 @@ int main(int argc, char **argv)
 		return (1);
 	else if (argc == 2)
 		argv = split(argv[1], ' ');
-	init_stack_a(&a, argv + 1);
+	init_stack_a(&a, argv);
 	if (!stack_sorted(a))
 	{
 		if (stack_len(a) == 2)
-			sa(&a, false);
+			sa(&a);
 		else if (stack_len(a) == 3)
 			sort_three(&a);
 		else

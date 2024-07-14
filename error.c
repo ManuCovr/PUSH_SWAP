@@ -2,14 +2,13 @@
 
 int		error_syntax(char *str_n)
 {
-	if (!(*str_n == '+'
-			|| *str_n == '-'
-			|| (*str_n >= '0' && *str_n <= '9')))
+	int i = 0;
+
+	if ((str_n[i] == '+' && str_n[i + 1] == '0')
+			|| (str_n[i] == '-' && str_n[i + 1] == '0'))
 		return (1);
-	if (!(*str_n == '+'
-			|| *str_n == '-')
-		&& !(str_n[1] >= '0' && str_n[1] <= '9'))
-		return (1);
+	if (*str_n == '+' || *str_n == '-')
+		i++;
 	while (*++str_n)
 	{
 		if (!(*str_n >= '0' && *str_n <= '9'))
@@ -27,6 +26,7 @@ int		error_dup(t_stack_node *a, int n) // checks for duplicate inputs
 	{
 		if (a->nbr == n)
 			return (1);
+		a = a->next;
 	}
 	return (0);
 }
@@ -53,6 +53,6 @@ void	free_my_mans(t_stack_node **stack) // frees stacks in case of error
 void	free_errors(t_stack_node **a)
 {
 	free_my_mans(a);
-	ft_printf("Error\n");
+	putstr("Error\n");
 	exit(1);
 }

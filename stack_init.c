@@ -51,6 +51,8 @@ void	init_stack_a(t_stack_node **a, char **argv)
 	int		i;
 
 	i = 0;
+	if (ft_strcmp(argv[0], "./push_swap") == 0)
+		i++;
 	while (argv[i])
 	{
 		if (error_syntax(argv[i]))
@@ -85,16 +87,16 @@ void	prep_for_push(t_stack_node **stack, t_stack_node *top, char stack_name)
 		if (stack_name == 'a')
 		{
 			if (top->above)
-				ra(stack, false);
+				ra(stack);
 			else
-				rra(stack, false);
+				rra(stack);
 		}
 		else if (stack_name == 'b')
 		{
 			if (top->above)
-				rb(stack, false);
+				rb(stack);
 			else
-				rrb(stack, false);
+				rrb(stack);
 		}
 	}
 }

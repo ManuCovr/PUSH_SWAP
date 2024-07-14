@@ -58,7 +58,7 @@ static void		analysis_a(t_stack_node *a, t_stack_node *b)
 	while (a)
 	{
 		a->push_cost = a->index;
-		if(!(a->above)) // check for errors in the median calculations
+		if (!(a->above)) // check for errors in the median calculations
 			a->push_cost = len_a - (a->index); 
 		if (a->target_node->above)
 			a->push_cost += a->target_node->index;

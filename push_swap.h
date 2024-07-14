@@ -2,8 +2,13 @@
 # define PUSH_SWAP_H
 
 # include <stdbool.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdarg.h>
 # include <limits.h>
-# include "libft/libft.h"
+# include <string.h>
+# include <fcntl.h>
 
 typedef struct s_stack_node
 {
@@ -37,25 +42,28 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b);
 void	sort_three(t_stack_node **a);
 
 //Commands
-void	sa(t_stack_node **a, bool print);
-void	sb(t_stack_node **b, bool print);
-void	ss(t_stack_node **a, t_stack_node **b, bool print);
-void	pa(t_stack_node **a, t_stack_node **b, bool print);
-void	pb(t_stack_node **b, t_stack_node **a, bool print);
-void	rra(t_stack_node **a, bool print);
-void	rrb(t_stack_node **b, bool print);
-void	rrr(t_stack_node **a, t_stack_node **b, bool print);
-void	ra(t_stack_node **a, bool print);
-void	rb(t_stack_node **b, bool print);
-void	rr(t_stack_node **a, t_stack_node **b, bool print);
+void	sa(t_stack_node **a);
+void	sb(t_stack_node **b);
+void	ss(t_stack_node **a, t_stack_node **b);
+void	pa(t_stack_node **a, t_stack_node **b);
+void	pb(t_stack_node **b, t_stack_node **a);
+void	rra(t_stack_node **a);
+void	rrb(t_stack_node **b);
+void	rrr(t_stack_node **a, t_stack_node **b);
+void	ra(t_stack_node **a);
+void	rb(t_stack_node **b);
+void	rr(t_stack_node **a, t_stack_node **b);
 
 //Nodes
 
 t_stack_node	*get_cheapest(t_stack_node *stack);
 void	init_nodes_a(t_stack_node *a, t_stack_node *b);
-void set_cheapest(t_stack_node *stack);
+void    set_cheapest(t_stack_node *stack);
 void	current_index(t_stack_node *stack);
 void	init_nodes_b(t_stack_node *a, t_stack_node *b);
 void	prep_for_push(t_stack_node **stack, t_stack_node *top, char stack_name);
+void	putstr(char *str);
+int	    ft_isdigit(int c);
+int	ft_strcmp(char *s1, char *s2);
 
 #endif

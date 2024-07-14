@@ -2,7 +2,7 @@
 
 int	stack_len(t_stack_node *stack) // check the stack lenght
 {
-	int	count;
+	int		count;
 
 	if (!stack)
 		return (0);
@@ -17,7 +17,7 @@ int	stack_len(t_stack_node *stack) // check the stack lenght
 
 t_stack_node	*find_last(t_stack_node *stack)
 {
-	if(!stack)
+	if (!stack)
 		return (NULL);
 	while (stack->next) // loop until the end of the stack
 		stack = stack->next;
@@ -76,3 +76,34 @@ t_stack_node	*find_max(t_stack_node *stack) // self-explanatory lol
 	}
 	return (max_node);
 }
+
+void	putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int i;
+
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		i++;
+	return (s1[i] - s2[i]);
+}
+
+

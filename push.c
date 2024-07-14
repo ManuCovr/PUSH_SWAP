@@ -4,7 +4,7 @@ static void		push(t_stack_node **dst, t_stack_node **src)
 {
 	t_stack_node	*push_node;
 
-	if(!*src)
+	if (!*src)
 		return ;
 	push_node = *src;
 	*src = (*src)->next; // move to the next node, which will become the new top node
@@ -24,16 +24,14 @@ static void		push(t_stack_node **dst, t_stack_node **src)
 	}
 }
 
-void	pa(t_stack_node **a, t_stack_node **b, bool print)
+void	pa(t_stack_node **a, t_stack_node **b)
 {
 	push(a, b);
-	if (!print)
-		ft_printf("pa\n");
+	putstr("pa\n");
 }
 
-void	pb(t_stack_node **b, t_stack_node **a, bool print)
+void	pb(t_stack_node **b, t_stack_node **a)
 {
 	push(b, a);
-	if (!print)
-		ft_printf("pb\n");
+	putstr("pb\n");
 }
