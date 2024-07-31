@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_a_to_b.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mde-maga <mtmpfb@gmail.com>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/26 15:49:55 by mde-maga          #+#    #+#             */
+/*   Updated: 2024/07/30 20:14:44 by mde-maga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	current_index(t_stack_node *stack)
@@ -6,9 +18,9 @@ void	current_index(t_stack_node *stack)
 	int	median;
 
 	i = 0;
-	if (!stack) // check for empty stack
+	if (!stack)
 		return ;
-	median = stack_len(stack) / 2; // calculate median
+	median = stack_len(stack) / 2;
 	while (stack)
 	{
 		stack->index = i;
@@ -21,11 +33,11 @@ void	current_index(t_stack_node *stack)
 	}
 }
 
-static void set_target_a (t_stack_node *a, t_stack_node *b)
+static void	set_target_a(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_b;
 	t_stack_node	*target_node;
-	long			best_match; // the best match index stores the value of the closest small nbr so far
+	long			best_match;
 
 	while (a)
 	{
@@ -40,7 +52,7 @@ static void set_target_a (t_stack_node *a, t_stack_node *b)
 			}
 			current_b = current_b->next;
 		}
-		if (best_match == LONG_MIN) // if LONG_MIN hasnt changed, then theres no smaller nbr
+		if (best_match == LONG_MIN)
 			a->target_node = find_max(b);
 		else
 			a->target_node = target_node;
@@ -48,7 +60,7 @@ static void set_target_a (t_stack_node *a, t_stack_node *b)
 	}
 }
 
-static void		analysis_a(t_stack_node *a, t_stack_node *b)
+static void	analysis_a(t_stack_node *a, t_stack_node *b)
 {
 	int		len_a;
 	int		len_b;
@@ -58,17 +70,17 @@ static void		analysis_a(t_stack_node *a, t_stack_node *b)
 	while (a)
 	{
 		a->push_cost = a->index;
-		if (!(a->above)) // check for errors in the median calculations
-			a->push_cost = len_a - (a->index); 
+		if (!(a->above))
+			a->push_cost = len_a - (a->index);
 		if (a->target_node->above)
 			a->push_cost += a->target_node->index;
 		else
 			a->push_cost += len_b - (a->target_node->index);
 		a = a->next;
 	}
-
 }
-void set_cheapest(t_stack_node *stack)
+
+void	set_cheapest(t_stack_node *stack)
 {
 	long			cheapest_v;
 	t_stack_node	*cheapest_node;

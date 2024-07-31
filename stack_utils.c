@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mde-maga <mtmpfb@gmail.com>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/26 15:50:50 by mde-maga          #+#    #+#             */
+/*   Updated: 2024/07/31 12:29:05 by mde-maga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	stack_len(t_stack_node *stack) // check the stack lenght
+int	stack_len(t_stack_node *stack)
 {
 	int		count;
 
@@ -19,25 +31,25 @@ t_stack_node	*find_last(t_stack_node *stack)
 {
 	if (!stack)
 		return (NULL);
-	while (stack->next) // loop until the end of the stack
+	while (stack->next)
 		stack = stack->next;
 	return (stack);
 }
 
-bool	stack_sorted(t_stack_node *stack) // check if stack is sorted
+bool	stack_sorted(t_stack_node *stack)
 {
 	if (!stack)
 		return (1);
 	while (stack->next)
 	{
-		if (stack->nbr > stack->next->nbr) // check if the current value is larger than the next node's value
+		if (stack->nbr > stack->next->nbr)
 			return (false);
 		stack = stack->next;
 	}
 	return (true);
 }
 
-t_stack_node	*find_min(t_stack_node *stack) // finds lowest nbr
+t_stack_node	*find_min(t_stack_node *stack)
 {
 	long			min;
 	t_stack_node	*min_node;
@@ -47,63 +59,12 @@ t_stack_node	*find_min(t_stack_node *stack) // finds lowest nbr
 	min = LONG_MAX;
 	while (stack)
 	{
-		if (stack->nbr < min) // check if current node is smaller than the smallest so far
+		if (stack->nbr < min)
 		{
-			min = stack->nbr; // if yes, update
-			min_node = stack; // point to the node with the smallest number
+			min = stack->nbr;
+			min_node = stack;
 		}
-		stack = stack->next; // move to the next node
+		stack = stack->next;
 	}
 	return (min_node);
 }
-
-t_stack_node	*find_max(t_stack_node *stack) // self-explanatory lol
-{
-	long			max;
-	t_stack_node	*max_node;
-
-	if (!stack)
-		return (NULL);
-	max = LONG_MIN;
-	while (stack)
-	{
-		if (stack->nbr > max)
-		{
-			max = stack->nbr;
-			max_node = stack;
-		}
-		stack = stack->next; // move to the next node
-	}
-	return (max_node);
-}
-
-void	putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-}
-
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	int i;
-
-	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-		i++;
-	return (s1[i] - s2[i]);
-}
-
-

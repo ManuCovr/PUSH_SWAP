@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mde-maga <mtmpfb@gmail.com>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/07/26 15:50:04 by mde-maga          #+#    #+#              #
+#    Updated: 2024/07/30 22:12:33 by mde-maga         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 # Standard
 NAME = push_swap
 SRCS =  $(wildcard *.c)
@@ -19,7 +31,9 @@ SRCS = push.c \
 								push_swap.c \
 								split.c \
 								stack_init.c \
-								stack_utils.c
+								stack_utils.c \
+								stack_utils2.c \
+								stack_utils3.c
 
 all: ${NAME}
 

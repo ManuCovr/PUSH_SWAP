@@ -1,44 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mde-maga <mtmpfb@gmail.com>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/26 15:50:37 by mde-maga          #+#    #+#             */
+/*   Updated: 2024/07/30 20:42:58 by mde-maga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void		rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node)
+static void	rotate_or_rev_rotate_both(t_stack_node **a,
+						t_stack_node **b,
+						t_stack_node *cheapest_node,
+						void (*rotate_func)(t_stack_node**, t_stack_node**))
 {
 	while (*b != cheapest_node->target_node && *a != cheapest_node)
-		rr(a, b);
+		rotate_func(a, b);
 	current_index(*a);
 	current_index(*b);
 }
 
-static void		rev_rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node)
-{
-	while (*b != cheapest_node->target_node && *a != cheapest_node)
-		rrr(a, b);
-	current_index(*a);
-	current_index(*b);
-}
-
-static void		move_a_to_b(t_stack_node **a, t_stack_node **b)
+static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 {
 	t_stack_node	*cheapest_node;
 
 	cheapest_node = get_cheapest(*a);
 	if (cheapest_node->above && cheapest_node->target_node->above)
-		rotate_both(a, b, cheapest_node);
+		rotate_or_rev_rotate_both(a, b, cheapest_node, rr);
 	else if (!(cheapest_node->above) && !(cheapest_node->target_node->above))
-		rev_rotate_both(a, b, cheapest_node);
-	prep_for_push(a, cheapest_node, 'a'); // make sure the cheapest node is at the top
-	prep_for_push(b, cheapest_node->target_node, 'b'); // make sure target node is at the top
+		rotate_or_rev_rotate_both(a, b, cheapest_node, rrr);
+	prep_for_push(a, cheapest_node, 'a');
+	prep_for_push(b, cheapest_node->target_node, 'b');
 	pb(b, a);
 }
 
-static void		move_b_to_a(t_stack_node **a, t_stack_node **b)
+static void	move_b_to_a(t_stack_node **a, t_stack_node **b)
 {
-	prep_for_push(a, (*b)->target_node, 'a'); // make sure 'b's target 'a' is on top
-	pa(a, b);
+	prep_for_push(a, (*b)->target_node, 'a');
 }
 
-static void		min_to_top(t_stack_node **a) // moves the smallest to the top
+static void	min_to_top(t_stack_node **a)
 {
-	while ((*a)->nbr != find_min(*a)->nbr) // while smallest number is not on top
+	while ((*a)->nbr != find_min(*a)->nbr)
 	{
 		if (find_min(*a)->above)
 			ra(a);
@@ -52,9 +58,9 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 	int		len_a;
 
 	len_a = stack_len(*a);
-	if (len_a-- > 3 && !stack_sorted(*a)) // if stack A has more than 3 nodes and arent sorted
+	if (len_a-- > 3 && !stack_sorted(*a))
 		pb(b, a);
-	if (len_a-- > 3 && !stack_sorted(*a)) // after pushing, check if there are STILL 3 nodes
+	if (len_a-- > 3 && !stack_sorted(*a))
 		pb(b, a);
 	while (len_a-- > 3 && !stack_sorted(*a))
 	{

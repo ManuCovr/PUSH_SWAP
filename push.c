@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mde-maga <mtmpfb@gmail.com>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/26 15:50:18 by mde-maga          #+#    #+#             */
+/*   Updated: 2024/07/26 16:21:41 by mde-maga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void		push(t_stack_node **dst, t_stack_node **src)
+static void	push(t_stack_node **dst, t_stack_node **src)
 {
 	t_stack_node	*push_node;
 
 	if (!*src)
 		return ;
 	push_node = *src;
-	*src = (*src)->next; // move to the next node, which will become the new top node
+	*src = (*src)->next;
 	if (*src)
-		(*src)->prev = NULL; // set current node as the head of the stack
-	push_node->prev = NULL; // detach the node to push it from its stack
-	if (!*dst) // check if stack (destiny) is empty
+		(*src)->prev = NULL;
+	push_node->prev = NULL;
+	if (!*dst)
 	{
 		*dst = push_node;
 		push_node->next = NULL;

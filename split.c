@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mde-maga <mtmpfb@gmail.com>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/26 15:50:43 by mde-maga          #+#    #+#             */
+/*   Updated: 2024/07/30 20:27:01 by mde-maga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	count_words(char *s, char c)
@@ -24,7 +36,7 @@ static int	count_words(char *s, char c)
 	return (count);
 }
 
-static char *get_next_word(char *s, char c)
+static char	*get_next_word(char *s, char c)
 {
 	static int	cursor = 0;
 	char		*next_word;
@@ -43,7 +55,7 @@ static char *get_next_word(char *s, char c)
 	while ((s[cursor] != c) && s[cursor])
 		next_word[i++] = s[cursor++];
 	next_word[i] = '\0';
-	return (next_word); 
+	return (next_word);
 }
 
 char	**split(char *s, char c)
@@ -74,4 +86,3 @@ char	**split(char *s, char c)
 	result[i] = NULL;
 	return (result);
 }
-

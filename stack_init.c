@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_init.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mde-maga <mtmpfb@gmail.com>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/26 15:50:47 by mde-maga          #+#    #+#             */
+/*   Updated: 2024/07/30 20:15:23 by mde-maga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static long ft_atol(const char *s)
+static long	ft_atol(const char *s)
 {
 	long	result;
 	int		sign;
@@ -20,7 +32,8 @@ static long ft_atol(const char *s)
 		result = result * 10 + (*s++ - '0');
 	return (result * sign);
 }
-static void append_node(t_stack_node **stack, int n)
+
+static void	append_node(t_stack_node **stack, int n)
 {
 	t_stack_node	*node;
 	t_stack_node	*last_node;
