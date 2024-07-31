@@ -6,7 +6,7 @@
 /*   By: mde-maga <mtmpfb@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 15:49:59 by mde-maga          #+#    #+#             */
-/*   Updated: 2024/07/31 12:24:26 by mde-maga         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:52:48 by mde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ static void	set_target_b(t_stack_node *a, t_stack_node *b)
 	{
 		best_match = LONG_MAX;
 		current_a = a;
-		target_node = NULL;
-		
 		while (current_a)
 		{
 			if (current_a->nbr > b->nbr
@@ -35,9 +33,7 @@ static void	set_target_b(t_stack_node *a, t_stack_node *b)
 			current_a = current_a->next;
 		}
 		if (best_match == LONG_MAX)
-		{
 			b->target_node = find_min(a);
-		}
 		else
 			b->target_node = target_node;
 		b = b->next;

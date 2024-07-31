@@ -6,7 +6,7 @@
 /*   By: mde-maga <mtmpfb@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 15:50:37 by mde-maga          #+#    #+#             */
-/*   Updated: 2024/07/30 20:42:58 by mde-maga         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:50:58 by mde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 static void	move_b_to_a(t_stack_node **a, t_stack_node **b)
 {
 	prep_for_push(a, (*b)->target_node, 'a');
+	pa (a, b);
 }
 
 static void	min_to_top(t_stack_node **a)
